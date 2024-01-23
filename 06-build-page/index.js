@@ -74,7 +74,7 @@ function addAssets(dest = '') {
   fs.readdir(srcPath, { withFileTypes: true }, (err, data) => {
     data.forEach((file) => {
       if (file.isDirectory()) {
-        const newDest = `${dest}\\${file.name}`;
+        const newDest = path.join(dest, file.name);
         addAssets(newDest);
       } else {
         const pathToFile = path.join(srcPath, file.name);
